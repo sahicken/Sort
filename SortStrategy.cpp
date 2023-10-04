@@ -157,13 +157,13 @@ int main() {
     Sort<int> s2(std::move(vec2), std::make_unique<QuickSort<int>>());
     Sort<int> s3(std::move(vec3), std::make_unique<BubbleSort<int>>());
 
-    s1.print();
-    s2.print();
-    s3.print();
-
     s1.sort();
     s2.sort();
     s3.sort();
+
+    s1.print();
+    s2.print();
+    s3.print();
 
     return 0;
 }
