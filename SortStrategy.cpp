@@ -23,33 +23,30 @@ class SortStrategy {
 template<typename T>
 class MergeSort : public SortStrategy<T> {
     private:
-        void merge(typename std::vector<T>::iterator start, typename std::vector<T>::iterator mid, typename std::vector<T>::iterator end) {
-            std::vector<T> left(start, mid);
-            std::vector<T> right(mid, end);
-
-            auto it = start;
+        void merge(std::vector<T>& vec, const std::vector<T>& left, const std::vector<T>& right) {
+            auto it = vec.begin();
             auto left_it = left.begin();
             auto right_it = right.begin();
 
             while (left_it != left.end() && right_it != right.end()) {
                 if (*left_it < *right_it) {
-                    *it = std::move(*left_it);
+                    *it = *left_it;
                     ++left_it;
                 } else {
-                    *it = std::move(*right_it);
+                    *it = *right_it;
                     ++right_it;
                 }
                 ++it;
             }
 
             while (left_it != left.end()) {
-                *it = std::move(*left_it);
+                *it = *left_it;
                 ++left_it;
                 ++it;
             }
 
             while (right_it != right.end()) {
-                *it = std::move(*right_it);
+                *it = *right_it;
                 ++right_it;
                 ++it;
             }
@@ -66,7 +63,7 @@ class MergeSort : public SortStrategy<T> {
 
             sort(left);
             sort(right);
-            merge(vec.begin(), vec.begin() + left.size(), vec.end());
+            merge(vec, left, right);
         }
 };
 
