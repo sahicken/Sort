@@ -1,9 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <random>
-#include <iterator>
 #include <chrono>
-#include <memory>
+#include <random>
 #include <functional>
 
 template<typename T>
